@@ -1,0 +1,26 @@
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int countNegatives(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+
+        int row = 0;
+        int col = n - 1;
+        int count = 0;
+
+        while (row < m && col >= 0) {
+            if (grid[row][col] < 0) {
+                // All elements below are negative
+                count += (m - row);
+                col--;   // move left
+            } else {
+                row++;   // move down
+            }
+        }
+
+        return count;
+    }
+};
